@@ -39,7 +39,7 @@
     "prod:sequence": "pnpm run clean:build && pnpm run clean:prod && pnpm run build && pnpm run postbuild && pnpm run dist",
 
     "test": "jest --config=jest.config.ts --json --outputFile=jest-unit-results.json",
-    "test:integration": "jest --config=tests/integrations/jest.config.ts --group=integration --json --outputFile=jest-results.json",
+    "test:integration": "jest tests/integrations/migrations/migration-2.test.ts --config=tests/integrations/jest.config.ts --group=integration --json --outputFile=jest-results.json",
     "test:dataVerification": "jest --config=tests/integrations/jest.config.ts --group=dataVerification --json --outputFile=jest-results.json",
     "test:matrix": "jest --config=tests/integrations/jest.config.ts --group=matrix --json --outputFile=jest-results.json",
     "test:coverage": "jest --config=jest.config.ts --coverage --passWithNoTests | tee ./coverage.txt",
@@ -117,6 +117,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.18.6",
+    "@babel/preset-env": "^7.23.2",
     "@commitlint/cli": "^17.3.0",
     "@commitlint/config-conventional": "^17.0.3",
     "@electron/notarize": "^1.2.3",
