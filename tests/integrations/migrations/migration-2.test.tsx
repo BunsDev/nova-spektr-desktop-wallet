@@ -42,19 +42,12 @@ describe('migrateWallets', () => {
 
   it('should migrate wallets correctly', async () => {
     await db.transaction('rw', ['accounts', 'wallets', 'multisigEvents'], async (transaction) => {
-      // Perform operations on the 'storeName' table here
       await migrateWallets(transaction);
     });
 
-    // Now check that the data in the database is as expected
-    // This might involve checking that certain records exist, or that they have certain properties
     const dbAccounts = await db.table('wallets').toArray();
 
-    // Now check that the data in the database is as expected
-    // This might involve checking that certain records exist, or that they have certain properties
     dbAccounts.forEach((account) => {
-      // Add your assertions here
-      // For example, you might check that the account has a certain property
       expect(account).toHaveProperty('walletId');
     });
   });
